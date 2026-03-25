@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<title>Wedding</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Playfair Display',serif;
+    scroll-behavior:smooth;
+}
+
+/* секции */
+.section{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+/* фон */
+.bg{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+}
+
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.45);
+    z-index:-1;
+}
+
+/* текст */
+.title{
+    font-size:42px;
+    color:#fff;
+    letter-spacing:5px;
+}
+
+.names{
+    font-size:26px;
+    color:#fff;
+    margin-top:10px;
+}
+
+.script{
+    font-family:'Great Vibes';
+    font-size:36px;
+}
+
+.block{
+    background:#8c745c;
+    color:#fff;
+    padding:40px 20px;
+}
+
+.light{
+    background:#f4f1ed;
+    color:#333;
+}
+
+/* волнистый блок */
+.curve{
+    border-top-left-radius:100px;
+}
+
+/* музыка */
+.music-btn{
+    position:fixed;
+    left:20px;
+    top:40%;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    border:2px solid white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    animation:spin 6s linear infinite;
+}
+
+@keyframes spin{
+    100%{transform:rotate(360deg)}
+}
+
+/* стрелка */
+.arrow{
+    position:absolute;
+    bottom:20px;
+    font-size:30px;
+    color:white;
+    animation:down 1.5s infinite;
+}
+
+@keyframes down{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(10px)}
+    100%{transform:translateY(0)}
+}
+
+/* анкета */
+input{
+    width:80%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-bottom:1px solid #999;
+    background:transparent;
+}
+
+button{
+    padding:12px 30px;
+    border-radius:25px;
+    border:none;
+    background:#8c745c;
+    color:#fff;
+    margin-top:15px;
+}
+
+/* таймер */
+.timer{
+    font-size:20px;
+    color:#fff;
+    margin-top:20px;
+}
+
+/* плавное появление */
+.fade{
+    opacity:0;
+    transform:translateY(20px);
+    transition:1s;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<!-- музыка -->
+<audio id="music" loop>
+<source src="https://files.catbox.moe/6l9k2k.mp3">
+</audio>
+
+<div class="music-btn" onclick="toggleMusic()">▶</div>
+
+<!-- 1 экран -->
+<section class="section">
+<img class="bg" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf">
+<div class="overlay"></div>
+
+<div class="title fade">WEDDING</div>
+<div class="names fade">Асылжан & Юлдуз</div>
+
+<div class="arrow">⌄</div>
+</section>
+
+<!-- 2 экран -->
+<section class="section block curve">
+<div class="script fade">Асылжан и Юлдуз</div>
+<div class="fade">10 мая 2026 г.</div>
+
+<p class="fade" style="max-width:300px;margin-top:15px">
+ДОРОГИЕ ГОСТИ!<br><br>
+10 мая 2026 года состоится долгожданное событие — день нашей свадьбы!<
