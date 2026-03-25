@@ -6,261 +6,324 @@
 
 <title>Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+
+/* ===== RESET ===== */
+* {margin:0;padding:0;box-sizing:border-box;}
 
 body{
-    font-family:'Playfair Display',serif;
-    scroll-behavior:smooth;
+  font-family:'Cormorant Garamond',serif;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
 }
 
-/* секции */
+/* ===== SCROLL SMOOTH ULTRA ===== */
+html{
+  scroll-behavior:smooth;
+}
+
+/* ===== SECTION ===== */
 .section{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
+  height:100vh;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  overflow:hidden;
 }
 
-/* фон */
+/* ===== PARALLAX ===== */
 .bg{
-    position:absolute;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:-2;
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  transform:scale(1.1);
+  transition:transform 1.5s ease;
 }
 
+.section:hover .bg{
+  transform:scale(1);
+}
+
+/* ===== OVERLAY LUX ===== */
 .overlay{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.45);
-    z-index:-1;
+  position:absolute;
+  inset:0;
+  background:
+  linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+  backdrop-filter: blur(2px);
 }
 
-/* текст */
+/* ===== TEXT ===== */
 .title{
-    font-size:42px;
-    color:#fff;
-    letter-spacing:5px;
+  font-family:'Playfair Display',serif;
+  font-size:42px;
+  letter-spacing:4px;
 }
 
 .names{
-    font-size:26px;
-    color:#fff;
-    margin-top:10px;
+  font-family:'Great Vibes',cursive;
+  font-size:38px;
+  margin-top:10px;
 }
 
-.script{
-    font-family:'Great Vibes';
-    font-size:36px;
+.text{
+  max-width:320px;
+  margin-top:20px;
+  font-size:16px;
+  line-height:1.7;
 }
 
-.block{
-    background:#8c745c;
-    color:#fff;
-    padding:40px 20px;
-}
-
-.light{
-    background:#f4f1ed;
-    color:#333;
-}
-
-/* волнистый блок */
-.curve{
-    border-top-left-radius:100px;
-}
-
-/* музыка */
-.music-btn{
-    position:fixed;
-    left:20px;
-    top:40%;
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    border:2px solid white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#fff;
-    animation:spin 6s linear infinite;
-    cursor:pointer;
-}
-
-@keyframes spin{
-    100%{transform:rotate(360deg)}
-}
-
-/* стрелка */
-.arrow{
-    position:absolute;
-    bottom:20px;
-    font-size:30px;
-    color:white;
-    animation:down 1.5s infinite;
-}
-
-@keyframes down{
-    0%{transform:translateY(0)}
-    50%{transform:translateY(10px)}
-    100%{transform:translateY(0)}
-}
-
-/* анкета */
-input{
-    width:80%;
-    padding:12px;
-    margin:10px 0;
-    border:none;
-    border-bottom:1px solid #999;
-    background:transparent;
-}
-
-button{
-    padding:12px 30px;
-    border-radius:25px;
-    border:none;
-    background:#8c745c;
-    color:#fff;
-    margin-top:15px;
-}
-
-/* таймер */
-.timer{
-    font-size:20px;
-    color:#fff;
-    margin-top:20px;
-}
-
-/* плавное появление */
+/* ===== FADE LUX ===== */
 .fade{
-    opacity:0;
-    transform:translateY(20px);
-    transition:1s;
+  opacity:0;
+  transform:translateY(60px) scale(0.98);
+  transition:1.2s cubic-bezier(.2,.8,.2,1);
 }
 
 .fade.show{
-    opacity:1;
-    transform:translateY(0);
+  opacity:1;
+  transform:translateY(0) scale(1);
 }
+
+/* ===== LOGO ===== */
+.logo{
+  width:130px;
+  margin-top:20px;
+  opacity:0.9;
+}
+
+/* ===== MUSIC VIP ===== */
+.music{
+  position:absolute;
+  left:20px;
+  bottom:120px;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,0.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  backdrop-filter: blur(10px);
+}
+
+.circle-text{
+  position:absolute;
+  width:100%;
+  height:100%;
+  font-size:10px;
+  animation:spin 12s linear infinite;
+}
+
+.music.pause .circle-text{
+  animation-play-state: paused;
+}
+
+.center{
+  width:16px;
+  height:16px;
+  background:white;
+}
+
+@keyframes spin{
+  from{transform:rotate(0)}
+  to{transform:rotate(360deg)}
+}
+
+/* ===== GLASS CARD ===== */
+.glass{
+  background:rgba(255,255,255,0.9);
+  color:#000;
+  padding:30px;
+  border-radius:40px 0 40px 0;
+  backdrop-filter:blur(20px);
+  width:90%;
+  max-width:320px;
+}
+
+/* ===== INPUT ===== */
+input{
+  width:100%;
+  border:none;
+  border-bottom:1px solid #000;
+  margin:15px 0;
+  padding:10px;
+  background:transparent;
+}
+
+/* ===== BUTTON ===== */
+button{
+  margin-top:15px;
+  padding:12px 25px;
+  border:none;
+  background:#8c7766;
+  color:#fff;
+  border-radius:20px;
+}
+
+/* ===== TIMER ===== */
+.timer{
+  margin-top:20px;
+  font-size:18px;
+  letter-spacing:2px;
+}
+
+/* ===== FADE BETWEEN BLOCKS ===== */
+.section::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:120px;
+  background:linear-gradient(transparent,#000);
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- музыка -->
-<audio id="music" loop>
-<source src="https://files.catbox.moe/6l9k2k.mp3">
-</audio>
-
-<div class="music-btn" onclick="toggleMusic()">▶</div>
-
-<!-- 1 экран -->
+<!-- ===== HERO ===== -->
 <section class="section">
-<img class="bg" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf">
-<div class="overlay"></div>
+  <div class="bg" style="background-image:url('assets/hero.jpg')"></div>
+  <div class="overlay"></div>
 
-<div class="title fade">WEDDING</div>
-<div class="names fade">Асылжан & Юлдуз</div>
+  <div class="fade">
+    <div class="title">WEDDING</div>
+    <div class="names">Асылжан & Юлдуз</div>
+    <img src="assets/logo-white.png" class="logo">
+  </div>
 
-<div class="arrow">⌄</div>
+  <div class="music" onclick="toggleMusic(this)">
+    <div class="circle-text">play • music • stop • play • music •</div>
+    <div class="center"></div>
+  </div>
 </section>
 
-<!-- 2 экран -->
-<section class="section block curve">
-<div class="script fade">Асылжан и Юлдуз</div>
-<div class="fade">10 мая 2026 г.</div>
-
-<p class="fade" style="max-width:300px;margin-top:15px">
-ДОРОГИЕ ГОСТИ!<br><br>
-10 мая 2026 года состоится долгожданное событие — день нашей свадьбы!<br><br>
-Этот особенный день мы хотим провести в окружении самых близких и дорогих людей.<br><br>
-С огромным удовольствием приглашаем вас разделить с нами этот праздник!
-</p>
+<!-- ===== TEXT ===== -->
+<section class="section" style="background:#8c7766">
+  <div class="fade">
+    <div class="names">10 мая 2026</div>
+    <div class="text">
+      Дорогие гости!<br><br>
+      Приглашаем вас разделить с нами самый важный день нашей жизни.
+    </div>
+  </div>
 </section>
 
-<!-- 3 экран -->
-<section class="section light">
-<h2>Gulvar Banquet Hall</h2>
-<p>г. Алматы<br>ул. Казыбек би, 43</p>
+<!-- ===== PLACE ===== -->
+<section class="section" style="background:#fff;color:#000">
+  <div class="fade">
+    <div class="title">БАНКЕТНЫЙ ЗАЛ</div>
+    <div class="title">Gulvar Banquet Hall</div>
+    <div class="text">
+      г. Алматы<br>
+      ул. Казыбек би, 43
+    </div>
 
-<h3>16:30</h3>
-<p>Сбор гостей</p>
-
-<h3>17:00</h3>
-<p>Банкет</p>
+    <div class="timer" id="timer"></div>
+  </div>
 </section>
 
-<!-- 4 экран -->
-<section class="section light">
-<h2>Анкета</h2>
-
-<input placeholder="Ваше имя и фамилия">
-
-<p>Планируете ли присутствовать?</p>
-
-<label><input type="radio" name="a"> Да, с удовольствием</label><br>
-<label><input type="radio" name="a"> К сожалению, не смогу</label><br>
-
-<button>Отправить</button>
+<!-- ===== TIME ===== -->
+<section class="section" style="background:#fff;color:#000">
+  <div class="fade">
+    <div class="title">16:30</div>
+    <div>Сбор гостей</div><br>
+    <div class="title">17:00</div>
+    <div>Банкет</div>
+  </div>
 </section>
 
-<!-- 5 экран -->
+<!-- ===== IMAGE ===== -->
 <section class="section">
-<img class="bg" src="https://images.unsplash.com/photo-1519741497674-611481863552">
-<div class="overlay"></div>
-
-<h2 style="color:white">До свадьбы осталось:</h2>
-<div class="timer" id="timer"></div>
+  <div class="bg" style="background-image:url('assets/couple.jpg')"></div>
+  <div class="overlay"></div>
 </section>
+
+<!-- ===== RSVP ===== -->
+<section class="section">
+  <div class="fade glass">
+
+    <h2>Анкета</h2>
+
+    <input id="name" placeholder="Ваше имя">
+
+    <label><input type="radio" name="ans" value="Приду"> Да</label><br>
+    <label><input type="radio" name="ans" value="Не смогу"> Нет</label>
+
+    <button onclick="send()">Отправить</button>
+
+    <img src="assets/logo-brown.png" style="width:90px;margin-top:20px">
+
+  </div>
+</section>
+
+<!-- ===== LAST ===== -->
+<section class="section">
+  <div class="bg" style="background-image:url('assets/last.jpg')"></div>
+  <div class="overlay"></div>
+</section>
+
+<audio id="music" src="assets/music.mp3"></audio>
 
 <script>
-// музыка
-function toggleMusic(){
-    const m = document.getElementById("music");
-    if(m.paused){
-        m.play();
-    }else{
-        m.pause();
-    }
+
+/* ===== FADE ===== */
+const obs = new IntersectionObserver(e=>{
+e.forEach(i=>{
+if(i.isIntersecting)i.target.classList.add('show');
+});
+});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+
+/* ===== MUSIC ===== */
+const audio = document.getElementById("music");
+
+function toggleMusic(el){
+if(audio.paused){
+audio.play();
+el.classList.remove("pause");
+}else{
+audio.pause();
+el.classList.add("pause");
+}
 }
 
-// таймер
-const targetDate = new Date("May 10, 2026 17:00:00").getTime();
+/* ===== TIMER ===== */
+const date = new Date("May 10, 2026 16:30").getTime();
 
-setInterval(() => {
-    const now = new Date().getTime();
-    const diff = targetDate - now;
+setInterval(()=>{
+const now=new Date().getTime();
+const d=date-now;
 
-    const d = Math.floor(diff / (1000*60*60*24));
-    const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-    const m = Math.floor((diff % (1000*60*60)) / (1000*60));
-    const s = Math.floor((diff % (1000*60)) / 1000);
+const days=Math.floor(d/86400000);
+const h=Math.floor((d/3600000)%24);
+const m=Math.floor((d/60000)%60);
+const s=Math.floor((d/1000)%60);
 
-    document.getElementById("timer").innerHTML =
-        d + " дней : " + h + " часов : " + m + " минут : " + s + " секунд";
-}, 1000);
+document.getElementById("timer").innerHTML=
+`${days} : ${h} : ${m} : ${s}`;
 
-// анимация появления
-const faders = document.querySelectorAll('.fade');
+},1000);
 
-window.addEventListener('scroll', () => {
-    faders.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if(top < window.innerHeight - 50){
-            el.classList.add('show');
-        }
-    });
-});
+/* ===== FORM ===== */
+function send(){
+const name=document.getElementById("name").value;
+const ans=document.querySelector('input[name="ans"]:checked')?.value;
+
+const phone="77071680798";
+
+window.open(`https://wa.me/${phone}?text=Имя:${name}%0AОтвет:${ans}`);
+}
+
 </script>
 
 </body>
